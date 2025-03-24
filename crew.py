@@ -72,14 +72,16 @@ class MarketingPostsCrew():
 	def research_task(self) -> Task:
 		return Task(
 			config=self.tasks_config['research_task'],
-			agent=self.lead_market_analyst()
+			agent=self.lead_market_analyst(),
+			output_pydantic=None
 		)
 
 	@task
 	def project_understanding_task(self) -> Task:
 		return Task(
 			config=self.tasks_config['project_understanding_task'],
-			agent=self.chief_marketing_strategist()
+			agent=self.chief_marketing_strategist(),
+			output_pydantic=None
 		)
 
 	@task
@@ -87,7 +89,8 @@ class MarketingPostsCrew():
 		return Task(
 			config=self.tasks_config['marketing_strategy_task'],
 			agent=self.chief_marketing_strategist(),
-			output_json=MarketStrategy
+			output_json=MarketStrategy,
+			output_pydantic=None
 		)
 
 	@task
@@ -95,7 +98,8 @@ class MarketingPostsCrew():
 		return Task(
 			config=self.tasks_config['campaign_idea_task'],
 			agent=self.creative_content_creator(),
-   		output_json=CampaignIdea
+   		output_json=CampaignIdea,
+			output_pydantic=None
 		)
 
 	@task
@@ -104,7 +108,8 @@ class MarketingPostsCrew():
 			config=self.tasks_config['copy_creation_task'],
 			agent=self.creative_content_creator(),
    		context=[self.marketing_strategy_task(), self.campaign_idea_task()],
-			output_json=Copy
+			output_json=Copy,
+			output_pydantic=None
 		)
 
 	@crew
